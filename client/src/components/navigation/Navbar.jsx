@@ -1,32 +1,6 @@
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-
 export default function Navbar() {
-  const navRef = useRef(null);
-
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-    
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > 50) {
-        if (currentScrollY > lastScrollY) {
-          gsap.to(navRef.current, { y: -100, duration: 0.3 }); // hide on scroll down
-        } else {
-          gsap.to(navRef.current, { y: 0, duration: 0.3, background: 'rgba(5, 5, 7, 0.8)', backdropFilter: 'blur(12px)' }); // show on scroll up
-        }
-      } else {
-        gsap.to(navRef.current, { y: 0, duration: 0.3, background: 'transparent', backdropFilter: 'none' });
-      }
-      lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <header ref={navRef} className="fixed top-0 inset-x-0 z-50 transition-all duration-500" id="nav">
+    <header className="fixed top-0 inset-x-0 z-50 transition-all duration-500" id="nav">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mt-5 flex items-center justify-between rounded-2xl glass px-4 lg:px-6 py-3">
           <a href="#" className="flex items-center gap-2.5 group">
