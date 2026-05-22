@@ -2,7 +2,15 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 inset-x-0 z-50 transition-all duration-500" id="nav">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mt-5 flex items-center justify-between rounded-2xl glass px-4 lg:px-6 py-3">
+        <div 
+          className="mt-5 flex items-center justify-between rounded-2xl glass px-4 lg:px-6 py-3"
+          style={{
+            background: "rgba(10, 10, 15, 0.45)",
+            backdropFilter: "blur(24px)",
+            WebkitBackdropFilter: "blur(24px)",
+            isolation: "isolate"
+          }}
+        >
           <a href="#" className="flex items-center gap-2.5 group">
             <span className="relative grid place-items-center w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 overflow-hidden">
               <svg viewBox="0 0 54 56" className="w-[22px] h-[22px]" fill="none" xmlns="http://www.w3.org/2000/svg" style={{filter: 'drop-shadow(0 0 6px rgba(238,78,148,0.45))'}}>

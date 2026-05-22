@@ -106,14 +106,14 @@
   .glass {
     background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
     border: 1px solid var(--border);
-    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
   }
   .glass-strong {
     background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.025));
     border: 1px solid var(--border-strong);
-    backdrop-filter: blur(28px);
     -webkit-backdrop-filter: blur(28px);
+    backdrop-filter: blur(28px);
   }
 
   /* Gradient border card */

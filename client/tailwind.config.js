@@ -4,6 +4,24 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  safelist: [
+    'backdrop-blur',
+    'backdrop-blur-sm',
+    'backdrop-blur-md',
+    'backdrop-blur-lg',
+    'backdrop-blur-xl',
+    'backdrop-blur-2xl',
+    'bg-white/5',
+    'bg-white/10',
+    'bg-black/20',
+    'border-white/10',
+    'glass',
+    'glass-strong',
+    { pattern: /backdrop-blur.*/ },
+    { pattern: /bg-white.*/ },
+    { pattern: /bg-black.*/ },
+    { pattern: /border-white.*/ },
+  ],
   theme: {
     extend: {
       fontFamily: {
