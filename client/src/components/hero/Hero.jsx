@@ -132,7 +132,7 @@ export default function Hero() {
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#c4b5fd" strokeWidth="2"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg>
                 </div>
                 <div>
-                  <div className="text-[13px] font-medium">HRM ERP</div>
+                  <div className="text-[13px] font-medium">Innonsh WorkGrid</div>
                   <div className="text-[11px] text-white/50">People, simplified</div>
                 </div>
               </div>

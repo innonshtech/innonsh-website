@@ -87,8 +87,11 @@ export default function Footer() {
               <li><a href="#erp" className="footer-link">Innonsh OS</a></li>
               <li><a href="#erp" className="footer-link">Construction ERP</a></li>
               <li><a href="#erp" className="footer-link">Doctor ERP</a></li>
-              <li><a href="#products" className="footer-link">Aaharly</a></li>
+              <li><a href="https://workgrid.innonsh.com" target="_blank" rel="noopener noreferrer" className="footer-link">Innonsh WorkGrid</a></li>
+              <li><a href="https://aaharly.com" target="_blank" rel="noopener noreferrer" className="footer-link">Aaharly</a></li>
               <li><a href="#products" className="footer-link">Abhinnati</a></li>
+              <li><a href="https://sprintos.innonsh.com/" target="_blank" rel="noopener noreferrer" className="footer-link">Sprint OS</a></li>
+              <li><a href="https://leadgen.innonsh.com/" target="_blank" rel="noopener noreferrer" className="footer-link">Innonsh LeadGen</a></li>
             </ul>
           </div>
           

@@ -57,7 +57,7 @@ export default function Products() {
 
         <div className="grid lg:grid-cols-2 gap-6">
           {/* Aaharly */}
-          <a href="#" onMouseMove={handleMouseMove} className="reveal gradient-border group relative overflow-hidden" style={{'--glow': 'rgba(16,185,129,0.5)'}}>
+          <a href="https://aaharly.com" target="_blank" rel="noopener noreferrer" onMouseMove={handleMouseMove} className="reveal gradient-border group relative overflow-hidden" style={{'--glow': 'rgba(16,185,129,0.5)'}}>
             <div className="absolute inset-0 opacity-50" style={{background: 'radial-gradient(900px 400px at 20% 0%, rgba(16,185,129,0.25), transparent 60%)'}}></div>
             <div className="relative p-10 flex flex-col h-full min-h-[520px]">
               <div className="flex items-center justify-between">

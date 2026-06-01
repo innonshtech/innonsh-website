@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+  import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Building2, Plus, Calendar, Settings } from 'lucide-react'; // Placeholder icons for ERPs
@@ -114,7 +114,7 @@ export default function ErpSolutions() {
           </a>
 
           {/* Doctor ERP */}
-          <a href="#" onMouseMove={handleMouseMove} className="reveal reveal-delay-1 lg:col-span-5 gradient-border group p-8 flex flex-col justify-between min-h-[400px]" style={{'--glow': 'rgba(34,211,238,0.5)'}}>
+          <a href="https://clinicpro.innonsh.com/" target="_blank" rel="noopener noreferrer" onMouseMove={handleMouseMove} className="reveal reveal-delay-1 lg:col-span-5 gradient-border group p-8 flex flex-col justify-between min-h-[400px]" style={{'--glow': 'rgba(34,211,238,0.5)'}}>
             <div>
               <div className="flex items-center justify-between mb-6">
                 <div className="w-11 h-11 rounded-xl grid place-items-center" style={{background: 'linear-gradient(135deg,#22d3ee40,#22d3ee10)', border: '1px solid #22d3ee40'}}>
@@ -122,7 +122,7 @@ export default function ErpSolutions() {
                 </div>
                 <svg className="w-5 h-5 text-white/40 group-hover:text-white transition-all group-hover:translate-x-1 group-hover:-translate-y-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
               </div>
-              <h3 className="display text-3xl font-semibold mb-3">Doctor ERP</h3>
+              <h3 className="display text-3xl font-semibold mb-3">Innonsh ClinicPro</h3>
               <p className="text-[15px] text-white/60 leading-relaxed max-w-md">
                 Patient records, queue management, billing, e-prescriptions, and analytics for modern clinics and polyclinics.
               </p>
@@ -151,7 +151,7 @@ export default function ErpSolutions() {
           </a>
 
           {/* Add the other 3 ERPs similarly: HRM, PrePrimary, Salon */}
-          <a href="#" onMouseMove={handleMouseMove} className="reveal lg:col-span-4 gradient-border group p-8 flex flex-col justify-between min-h-[360px]" style={{'--glow': 'rgba(167,139,250,0.5)'}}>
+          <a href="https://workgrid.innonsh.com" target="_blank" rel="noopener noreferrer" onMouseMove={handleMouseMove} className="reveal lg:col-span-4 gradient-border group p-8 flex flex-col justify-between min-h-[360px]" style={{'--glow': 'rgba(167,139,250,0.5)'}}>
             <div>
               <div className="flex items-center justify-between mb-6">
                 <div className="w-11 h-11 rounded-xl grid place-items-center" style={{background: 'linear-gradient(135deg,#a78bfa40,#a78bfa10)', border: '1px solid #a78bfa40'}}>
@@ -159,12 +159,13 @@ export default function ErpSolutions() {
                 </div>
                 <svg className="w-5 h-5 text-white/40 group-hover:text-white transition-all group-hover:translate-x-1 group-hover:-translate-y-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
               </div>
-              <h3 className="display text-2xl font-semibold mb-3">HRM ERP</h3>
+              <h3 className="display text-2xl font-semibold mb-3">Innonsh WorkGrid</h3>
               <p className="text-[14.5px] text-white/60 leading-relaxed">
                 Attendance, payroll, leave, performance, and onboarding your entire people-ops stack in one elegant workspace.
               </p>
             </div>
             <div className="preview mt-6">
+              <div className="preview-bar"><span></span><span></span><span></span><div className="ml-auto text-[10px] text-white/40">workgrid.innonsh.com</div></div>
               <div className="p-3">
                 <div className="flex items-center justify-between text-[11px] mb-2"><span className="text-white/40">Headcount</span><span className="text-violet-300">3,420</span></div>
                 <svg viewBox="0 0 200 60" className="w-full h-12 sparkline">
@@ -181,7 +182,7 @@ export default function ErpSolutions() {
           </a>
 
           {/* PrePrimary ERP */}
-          <a href="#" onMouseMove={handleMouseMove} className="reveal reveal-delay-1 lg:col-span-4 gradient-border group p-8 flex flex-col justify-between min-h-[360px]" style={{'--glow': 'rgba(244,114,182,0.5)'}}>
+          <a href="https://tinysteps.innonsh.com/" target="_blank" rel="noopener noreferrer" onMouseMove={handleMouseMove} className="reveal reveal-delay-1 lg:col-span-4 gradient-border group p-8 flex flex-col justify-between min-h-[360px]" style={{'--glow': 'rgba(244,114,182,0.5)'}}>
             <div>
               <div className="flex items-center justify-between mb-6">
                 <div className="w-11 h-11 rounded-xl grid place-items-center" style={{background: 'linear-gradient(135deg,#f472b640,#f472b610)', border: '1px solid #f472b640'}}>
@@ -189,7 +190,7 @@ export default function ErpSolutions() {
                 </div>
                 <svg className="w-5 h-5 text-white/40 group-hover:text-white transition-all group-hover:translate-x-1 group-hover:-translate-y-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
               </div>
-              <h3 className="display text-2xl font-semibold mb-3">PrePrimary School ERP</h3>
+              <h3 className="display text-2xl font-semibold mb-3">Innonsh TinySteps</h3>
               <p className="text-[14.5px] text-white/60 leading-relaxed">
                 Admissions, fees, attendance, daily reports, and parent communication designed for early-years institutions.
               </p>
@@ -246,6 +247,72 @@ export default function ErpSolutions() {
             <div className="mt-5 flex items-center text-[14px] text-rose-300/90 font-medium">
               Explore product
               <svg className="ml-2 transition-transform group-hover:translate-x-1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+
+          {/* Sprint OS */}
+          <a href="https://sprintos.innonsh.com/" target="_blank" rel="noopener noreferrer" onMouseMove={handleMouseMove} className="reveal reveal-delay-1 lg:col-span-6 gradient-border group p-8 flex flex-col justify-between min-h-[360px]" style={{'--glow': 'rgba(56,189,248,0.5)'}}>
+            <div>
+              <div className="flex items-center justify-between mb-6">
+                <div className="w-11 h-11 rounded-xl grid place-items-center" style={{background: 'linear-gradient(135deg,#38bdf840,#38bdf810)', border: '1px solid #38bdf840'}}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" strokeWidth="1.8"><rect x="5" y="3" width="5" height="14" rx="1"/><rect x="14" y="3" width="5" height="9" rx="1"/></svg>
+                </div>
+                <svg className="w-5 h-5 text-white/40 group-hover:text-white transition-all group-hover:translate-x-1 group-hover:-translate-y-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </div>
+              <h3 className="display text-2xl font-semibold mb-3">Innonsh Sprint OS</h3>
+              <p className="text-[14.5px] text-white/60 leading-relaxed">
+                Backlogs, boards, sprints, standups and burndowns — turning scattered tasks into shipped, on-time releases.
+              </p>
+            </div>
+            <div>
+              <div className="preview mt-6 rounded-xl p-4 bg-white/[0.03] border border-white/10">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[12px] text-white/50">Sprint 14 burndown</span>
+                  <span className="text-[12px] text-white/70">Day 6 / 10</span>
+                </div>
+                <svg viewBox="0 0 280 56" width="100%" height="48" fill="none">
+                  <path d="M4 8 C 60 14, 110 30, 150 34 S 230 48, 276 50" stroke="#7DD3FC" strokeWidth="2.5" strokeLinecap="round"/>
+                </svg>
+              </div>
+              <div className="mt-5 flex items-center text-[14px] text-sky-300/90 font-medium">
+                Explore product
+                <svg className="ml-2 transition-transform group-hover:translate-x-1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </div>
+            </div>
+          </a>
+
+          {/* Innonsh LeadGen */}
+          <a href="https://leadgen.innonsh.com/" target="_blank" rel="noopener noreferrer" onMouseMove={handleMouseMove} className="reveal reveal-delay-2 lg:col-span-6 gradient-border group p-8 flex flex-col justify-between min-h-[360px]" style={{'--glow': 'rgba(52,211,153,0.5)'}}>
+            <div>
+              <div className="flex items-center justify-between mb-6">
+                <div className="w-11 h-11 rounded-xl grid place-items-center" style={{background: 'linear-gradient(135deg,#34d39940,#34d39910)', border: '1px solid #34d39940'}}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6EE7B7" strokeWidth="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <svg className="w-5 h-5 text-white/40 group-hover:text-white transition-all group-hover:translate-x-1 group-hover:-translate-y-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </div>
+              <h3 className="display text-2xl font-semibold mb-3">Innonsh LeadGen</h3>
+              <p className="text-[14.5px] text-white/60 leading-relaxed">
+                Leads, pipeline, deals, follow-ups and reporting — turning conversations into closed revenue, one stage at a time.
+              </p>
+            </div>
+            <div>
+              <div className="preview mt-6 p-3">
+                <div className="grid grid-cols-3 gap-2">
+                  <div className="rounded-lg p-2.5" style={{background: 'rgba(52,211,153,0.08)', border: '1px solid rgba(52,211,153,0.2)'}}>
+                    <div className="text-[10px] text-white/50">Leads</div><div className="display font-semibold text-emerald-200">1,284</div>
+                  </div>
+                  <div className="rounded-lg p-2.5 bg-white/[0.03] border border-white/10">
+                    <div className="text-[10px] text-white/50">Won</div><div className="display font-semibold">38%</div>
+                  </div>
+                  <div className="rounded-lg p-2.5 bg-white/[0.03] border border-white/10">
+                    <div className="text-[10px] text-white/50">Revenue</div><div className="display font-semibold">₹62L</div>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-5 flex items-center text-[14px] text-emerald-300/90 font-medium">
+                Explore product
+                <svg className="ml-2 transition-transform group-hover:translate-x-1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </div>
             </div>
           </a>
         </div>
