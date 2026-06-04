@@ -82,7 +82,7 @@ const LeadCapture = () => {
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 md:p-12 shadow-2xl shadow-black/50">
+        <div className="max-w-2xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl shadow-black/50">
           {status === 'success' ? (
             <div className="text-center py-16 animate-fade-in">
               <div className="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -197,7 +197,7 @@ const LeadCapture = () => {
                   id="message"
                   name="message"
                   required
-                  rows="4"
+                  rows="3"
                   value={formData.message}
                   onChange={handleChange}
                   className="block w-full px-4 pt-6 pb-2 bg-black/20 border border-white/10 rounded-xl focus:border-violet-500 focus:ring-1 focus:ring-violet-500 transition-all duration-300 text-white placeholder-transparent peer outline-none resize-none"
@@ -220,8 +220,8 @@ const LeadCapture = () => {
                 className="w-full relative group overflow-hidden rounded-xl p-[1px]"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-violet-600 via-cyan-500 to-violet-600 opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="relative bg-[#050507] px-8 py-4 rounded-xl transition-all duration-300 group-hover:bg-opacity-0">
-                  <span className="relative z-10 text-white font-semibold text-lg flex items-center justify-center gap-2">
+                <div className="relative bg-[#050507] px-8 py-3 rounded-xl transition-all duration-300 group-hover:bg-opacity-0">
+                  <span className="relative z-10 text-white font-semibold text-base flex items-center justify-center gap-2">
                     {status === 'loading' ? (
                       <>
                         <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
