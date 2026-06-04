@@ -60,7 +60,7 @@ export default function ErpSolutions() {
         <div className="grid lg:grid-cols-12 gap-5">
           
           {/* Construction ERP */}
-          <a href="#" onMouseMove={handleMouseMove} className="reveal lg:col-span-7 gradient-border group p-8 lg:p-10 flex flex-col justify-between min-h-[400px]" style={{'--glow': 'rgba(245,158,11,0.45)'}}>
+          <a href="https://infra.innonsh.com/" target="_blank" rel="noopener noreferrer" onMouseMove={handleMouseMove} className="reveal lg:col-span-7 gradient-border group p-8 lg:p-10 flex flex-col justify-between min-h-[400px]" style={{'--glow': 'rgba(245,158,11,0.45)'}}>
             <div>
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
@@ -71,7 +71,7 @@ export default function ErpSolutions() {
                 </div>
                 <svg className="w-5 h-5 text-white/40 group-hover:text-white transition-all group-hover:translate-x-1 group-hover:-translate-y-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
               </div>
-              <h3 className="display text-3xl font-semibold mb-3">Construction ERP</h3>
+              <h3 className="display text-3xl font-semibold mb-3">Innonsh Infra</h3>
               <p className="text-[15px] text-white/60 leading-relaxed max-w-md">
                 Site management, BoQ, vendor billing, machinery tracking, labour attendance and project P&amp;L for builders running multiple projects at once.
               </p>
@@ -79,7 +79,7 @@ export default function ErpSolutions() {
 
             {/* Mini preview */}
             <div className="preview mt-8">
-              <div className="preview-bar"><span></span><span></span><span></span><div className="ml-auto text-[10px] text-white/40">construction.innonsh.app</div></div>
+              <div className="preview-bar"><span></span><span></span><span></span><div className="ml-auto text-[10px] text-white/40">infra.innonsh.com</div></div>
               <div className="p-5 grid grid-cols-3 gap-3">
                 <div className="col-span-2">
                   <div className="text-[10px] uppercase tracking-wider text-white/40 mb-2">Active sites</div>

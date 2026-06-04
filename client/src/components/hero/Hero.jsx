@@ -110,7 +110,7 @@ export default function Hero() {
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fbbf24" strokeWidth="2"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21V12h6v9"/></svg>
                 </div>
                 <div>
-                  <div className="text-[13px] font-medium">Construction ERP</div>
+                  <div className="text-[13px] font-medium">Innonsh Infra</div>
                   <div className="text-[11px] text-white/50">Sites, simplified</div>
                 </div>
               </div>

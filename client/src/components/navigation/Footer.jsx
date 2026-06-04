@@ -85,7 +85,7 @@ export default function Footer() {
             <h4 className="text-[13px] font-semibold text-white mb-5 uppercase tracking-wider">Products</h4>
             <ul className="space-y-3.5 text-[14.5px]">
               <li><a href="#erp" className="footer-link">Innonsh OS</a></li>
-              <li><a href="#erp" className="footer-link">Construction ERP</a></li>
+              <li><a href="https://infra.innonsh.com/" target="_blank" rel="noopener noreferrer" className="footer-link">Innonsh Infra</a></li>
               <li><a href="#erp" className="footer-link">Doctor ERP</a></li>
               <li><a href="https://workgrid.innonsh.com" target="_blank" rel="noopener noreferrer" className="footer-link">Innonsh WorkGrid</a></li>
               <li><a href="https://aaharly.com" target="_blank" rel="noopener noreferrer" className="footer-link">Aaharly</a></li>
