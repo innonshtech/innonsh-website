@@ -98,7 +98,8 @@
     filter: blur(80px); 
     opacity: 0.55;
     pointer-events: none; 
-    will-change: transform;
+    will-change: transform, opacity;
+    transform: translateZ(0); /* Hardware acceleration */
   }
 
   /* Glass card */
@@ -107,12 +108,14 @@
     border: 1px solid var(--border);
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
+    transform: translateZ(0); /* Hardware acceleration */
   }
   .glass-strong {
     background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.025));
     border: 1px solid var(--border-strong);
     -webkit-backdrop-filter: blur(28px);
     backdrop-filter: blur(28px);
+    transform: translateZ(0); /* Hardware acceleration */
   }
 
   /* Gradient border card */
@@ -284,4 +287,29 @@
 @media (max-width: 768px) {
   .float-card { display: none; }
   .cursor-blob { display: none; }
+  
+  /* Disable expensive filters on mobile */
+  .glass {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(20, 20, 24, 0.95);
+  }
+  .glass-strong {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(30, 30, 36, 0.95);
+  }
+  .float-card {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(20, 20, 28, 1);
+  }
+  /* Reduce blur on orbs or completely remove to avoid iOS Safari compositing crashes */
+  .orb {
+    filter: blur(40px); 
+    opacity: 0.3;
+  }
+  .conic-ring {
+    filter: blur(15px);
+  }
 }

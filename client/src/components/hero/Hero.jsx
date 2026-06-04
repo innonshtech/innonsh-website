@@ -5,12 +5,26 @@ export default function Hero() {
   const heroRef = useRef(null);
 
   useEffect(() => {
-    // GSAP reveal animations
+    // GSAP reveal animations with hardware acceleration hints
     const reveals = heroRef.current.querySelectorAll('.reveal');
     reveals.forEach((el, index) => {
+      // Hint to the browser that these properties will change
+      gsap.set(el, { willChange: "transform, opacity" });
+      
       gsap.fromTo(el, 
         { opacity: 0, y: 28 }, 
-        { opacity: 1, y: 0, duration: 0.9, delay: index * 0.08, ease: "power2.out" }
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 0.9, 
+          delay: index * 0.08, 
+          ease: "power2.out",
+          force3D: true, // Force GPU compositing
+          onComplete: () => {
+            // Free up GPU memory once animation is complete
+            gsap.set(el, { willChange: "auto" });
+          }
+        }
       );
     });
   }, []);
