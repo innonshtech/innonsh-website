@@ -23,7 +23,8 @@
 
   html, body { 
     background: var(--bg); 
-    color: var(--text); 
+    color: var(--text);
+    overflow-x: hidden; 
   }
 
   body {
@@ -31,8 +32,6 @@
     font-feature-settings: "ss01","cv11";
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    overflow-x: hidden;
-    zoom: 0.9; /* renders at the preferred 90% scale by default */
   }
 
   ::selection { 
