@@ -1,20 +1,31 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Lenis from '@studio-freight/lenis';
 import CursorBlob from './components/animations/CursorBlob';
 import Navbar from './components/navigation/Navbar';
-import Hero from './components/hero/Hero';
-import TrustMarquee from './components/sections/TrustMarquee';
-import Services from './components/sections/Services';
-import ErpSolutions from './components/sections/ErpSolutions';
-import Products from './components/sections/Products';
-import WhyUs from './components/sections/WhyUs';
-import Process from './components/sections/Process';
-import TechStack from './components/sections/TechStack';
-import Testimonials from './components/sections/Testimonials';
-import LeadCapture from './components/LeadCapture';
 import Footer from './components/navigation/Footer';
+import Home from './pages/Home';
+import ServiceDetail from './pages/ServiceDetail';
+
+// Component to handle scroll restoration on route changes
+function ScrollToTop({ lenisRef }) {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, lenisRef]);
+
+  return null;
+}
 
 function App() {
+  // Store lenis instance to pass to ScrollToTop
+  const lenisRef = useRef(null);
+
   useEffect(() => {
     // Detect mobile/touch devices for aggressive optimization
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
@@ -31,6 +42,8 @@ function App() {
       touchMultiplier: 2,
       infinite: false,
     });
+    
+    lenisRef.current = lenis;
 
     let rafId;
 
@@ -49,27 +62,23 @@ function App() {
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
 
   return (
-    <>
+    <Router>
+      <ScrollToTop lenisRef={lenisRef} />
       <CursorBlob />
       <Navbar />
       <main>
-        <Hero />
-        <TrustMarquee />
-        <Services />
-        <ErpSolutions />
-        <Products />
-        <WhyUs />
-        <Process />
-        <TechStack />
-        <Testimonials />
-        <LeadCapture />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services/:id" element={<ServiceDetail />} />
+        </Routes>
       </main>
       <Footer />
-    </>
+    </Router>
   );
 }
 
