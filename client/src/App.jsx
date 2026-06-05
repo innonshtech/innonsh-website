@@ -11,7 +11,6 @@ import WhyUs from './components/sections/WhyUs';
 import Process from './components/sections/Process';
 import TechStack from './components/sections/TechStack';
 import Testimonials from './components/sections/Testimonials';
-import ContactCTA from './components/sections/ContactCTA';
 import LeadCapture from './components/LeadCapture';
 import Footer from './components/navigation/Footer';
 
@@ -67,7 +66,6 @@ function App() {
         <Process />
         <TechStack />
         <Testimonials />
-        <ContactCTA />
         <LeadCapture />
       </main>
       <Footer />

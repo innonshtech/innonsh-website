@@ -243,7 +243,7 @@
 
   /* Cursor blob */
   .cursor-blob {
-    position: fixed; top: 0; left: 0; pointer-events: none; z-index: 5;
+    position: fixed; top: 0; left: 0; pointer-events: none; z-index: 50;
     width: 360px; height: 360px; border-radius: 999px;
     background: radial-gradient(circle at center, rgba(139,92,246,0.25), transparent 60%);
     filter: blur(20px); transform: translate(-50%, -50%);

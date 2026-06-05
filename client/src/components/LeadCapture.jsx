@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const LeadCapture = () => {
+  const sectionRef = useRef(null);
   const [formData, setFormData] = useState({
     service: '',
     companyName: '',
@@ -21,6 +26,33 @@ const LeadCapture = () => {
     'Salon Management ERP',
     'Innonsh LeadGen'
   ];
+
+  useEffect(() => {
+    const reveals = sectionRef.current.querySelectorAll('.reveal');
+    reveals.forEach((el, index) => {
+      let delay = 0;
+      if (el.classList.contains('reveal-delay-1')) delay = 0.08;
+      if (el.classList.contains('reveal-delay-2')) delay = 0.16;
+      if (el.classList.contains('reveal-delay-3')) delay = 0.24;
+      if (el.classList.contains('reveal-delay-4')) delay = 0.32;
+      if (el.classList.contains('reveal-delay-5')) delay = 0.40;
+      
+      gsap.fromTo(el, 
+        { opacity: 0, y: 28 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 0.9, 
+          delay: delay,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          }
+        }
+      );
+    });
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -65,24 +97,43 @@ const LeadCapture = () => {
   };
 
   return (
-    <section className="relative w-full py-24 bg-[#050507] text-white overflow-hidden">
+    <section id="contact" ref={sectionRef} className="relative w-full py-24 bg-[#050507] text-white overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-violet-600/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute inset-0">
+        <div className="orb" style={{top: 0, left: '10%', width: '540px', height: '540px', background: 'radial-gradient(circle, rgba(139,92,246,0.3), transparent 60%)'}}></div>
+        <div className="orb" style={{bottom: 0, right: '10%', width: '540px', height: '540px', background: 'radial-gradient(circle, rgba(34,211,238,0.2), transparent 60%)'}}></div>
+        <div className="absolute inset-0 bg-grid mask-radial opacity-30"></div>
+      </div>
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-cyan-400 text-sm font-semibold tracking-wider mb-6">
-            LET'S BUILD YOUR NEXT PRODUCT
-          </span>
-          <h2 className="text-5xl md:text-6xl font-semibold tracking-[-0.04em] mb-6">
-            Transform Your Vision Into Reality
-          </h2>
-          <p className="text-xl text-white/60 max-w-2xl mx-auto font-light">
-            Partner with Innonsh Technologies to engineer scalable, enterprise-grade digital products tailored to your business.
-          </p>
-        </div>
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-12 items-center">
+          
+          {/* Left Side - Text */}
+          <div className="text-left">
+            <div className="reveal chip mb-7"><span className="chip-dot"></span> Let's build</div>
+            <h2 className="reveal reveal-delay-1 display text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-[-0.04em] leading-[0.98]">
+              Build the <span className="serif-italic glow-accent pr-2">future</span><br/>with Innonsh.
+            </h2>
+            <p className="reveal reveal-delay-2 mt-7 text-[17px] lg:text-[19px] text-white/65 max-w-xl leading-relaxed">
+              Tell us about your business. We'll come back within 24 hours with a clear path forward no decks, no fluff.
+            </p>
+            <div className="reveal reveal-delay-3 mt-10 flex flex-wrap items-center gap-3">
+              <a href="mailto:hello@innonsh.com" className="btn-primary magnetic !py-4 !px-7 text-base">
+                Start a project
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#" className="btn-ghost !py-4 !px-7 text-base">Book a 30-min intro call</a>
+            </div>
 
-        <div className="max-w-2xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl shadow-black/50">
+            <div className="reveal reveal-delay-4 mt-14 flex items-center gap-8 text-[13px] text-white/45">
+              <div className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>Accepting new projects · 2026</div>
+              <div className="hidden sm:block">·</div>
+              <div className="hidden sm:block">Avg. response: 4 hours</div>
+            </div>
+          </div>
+
+          {/* Right Side - Form */}
+          <div className="reveal reveal-delay-5 w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl shadow-black/50">
           {status === 'success' ? (
             <div className="text-center py-16 animate-fade-in">
               <div className="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -238,6 +289,7 @@ const LeadCapture = () => {
             </form>
           )}
         </div>
+      </div>
       </div>
     </section>
   );
