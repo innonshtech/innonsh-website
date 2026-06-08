@@ -145,7 +145,7 @@ export default function Services() {
         </div>
 
         {/* Services grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="servicesGrid">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 items-start" id="servicesGrid">
           {servicesData.map((s, idx) => (
             <Link to={`/services/${s.slug}`} key={idx} onMouseMove={handleMouseMove} className={`block reveal ${s.delay} gradient-border p-7 cursor-pointer hover:-translate-y-1 transition-transform`} style={{ '--glow': s.glow }}>
               <div className={`w-11 h-11 rounded-xl grid place-items-center border mb-6 ${s.bg}`}>

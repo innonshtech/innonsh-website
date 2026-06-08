@@ -27,7 +27,7 @@ export default function ServiceDetail() {
   const Icon = service.icon;
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-[#050507] text-white pt-32 pb-24">
+    <div className="relative overflow-hidden bg-[#050507] text-white pt-32 pb-24">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-grid-fine mask-radial opacity-40"></div>
       <div className="orb" style={{ top: '-10%', right: '-10%', width: '600px', height: '600px', background: `radial-gradient(circle, ${service.glow}, transparent 60%)` }}></div>

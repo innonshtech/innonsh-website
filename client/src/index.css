@@ -32,6 +32,7 @@
     font-feature-settings: "ss01","cv11";
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    zoom: 0.9;
   }
 
   ::selection { 

@@ -48,7 +48,7 @@ export default function ErpSolutions() {
           <div>
             <div className="reveal chip mb-6"><span className="chip-dot" style={{background: '#22d3ee', boxShadow: '0 0 12px #22d3ee'}}></span> ERP Suite</div>
             <h2 className="reveal display text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.035em] leading-[1.02]">
-              Five industries.<br/> One <span className="serif-italic glow-accent">operating system</span>.
+              Seven industries.<br/> One <span className="serif-italic glow-accent">operating system</span>.
             </h2>
           </div>
           <p className="reveal text-[16.5px] text-white/60 max-w-md leading-relaxed">
