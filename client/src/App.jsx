@@ -6,17 +6,27 @@ import Navbar from './components/navigation/Navbar';
 import Footer from './components/navigation/Footer';
 import Home from './pages/Home';
 import ServiceDetail from './pages/ServiceDetail';
+import Privacy from './pages/Privacy';
 
 // Component to handle scroll restoration on route changes
 function ScrollToTop({ lenisRef }) {
   const { pathname } = useLocation();
+  const prevPathnameRef = useRef(pathname);
 
   useEffect(() => {
-    if (lenisRef.current) {
-      lenisRef.current.scrollTo(0, { immediate: true });
-    } else {
-      window.scrollTo(0, 0);
+    // If transitioning between / and /services/:id, do not scroll to top
+    const isModalTransition = 
+      (pathname === '/' || pathname.startsWith('/services/')) &&
+      (prevPathnameRef.current === '/' || prevPathnameRef.current.startsWith('/services/'));
+
+    if (!isModalTransition) {
+      if (lenisRef.current) {
+        lenisRef.current.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo(0, 0);
+      }
     }
+    prevPathnameRef.current = pathname;
   }, [pathname, lenisRef]);
 
   return null;
@@ -44,6 +54,7 @@ function App() {
     });
     
     lenisRef.current = lenis;
+    window.lenis = lenis;
 
     let rafId;
 
@@ -63,6 +74,7 @@ function App() {
       if (rafId) cancelAnimationFrame(rafId);
       lenis.destroy();
       lenisRef.current = null;
+      window.lenis = null;
     };
   }, []);
 
@@ -74,7 +86,8 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/services/:id" element={<ServiceDetail />} />
+          <Route path="/services/:id" element={<Home />} />
+          <Route path="/privacy" element={<Privacy />} />
         </Routes>
       </main>
       <Footer />

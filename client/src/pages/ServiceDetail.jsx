@@ -1,98 +1,189 @@
 import { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import gsap from 'gsap';
+import { useParams, useNavigate } from 'react-router-dom';
 import { servicesDetailed } from '../data/servicesDetailed';
 
 export default function ServiceDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const service = servicesDetailed[id];
 
+  const handleClose = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    
+    const backdrop = document.querySelector('.modal-backdrop');
+    const panel = document.querySelector('.modal-panel-card');
+    
+    if (panel) {
+      panel.style.transition = 'opacity 0.35s cubic-bezier(.2,.7,.2,1), transform 0.35s cubic-bezier(.2,.7,.2,1)';
+      panel.style.opacity = '0';
+      panel.style.transform = 'translateY(20px) scale(0.97)';
+    }
+    
+    if (backdrop) {
+      backdrop.style.transition = 'opacity 0.35s ease';
+      backdrop.style.opacity = '0';
+    }
+    
+    setTimeout(() => {
+      navigate('/');
+    }, 350);
+  };
+
+  const handleBackdropClick = (e) => {
+    if (e.target.classList.contains('modal-backdrop')) {
+      handleClose(e);
+    }
+  };
+
   useEffect(() => {
-    // Hero entrance animation
-    gsap.fromTo('.service-reveal', 
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: 'power3.out', delay: 0.2 }
-    );
-  }, [id]);
+    if (!service) return;
+
+    // Add overflow hidden to body to prevent background scrolling
+    document.body.classList.add('modal-open');
+
+    // Stop smooth scroll (Lenis) if available
+    if (window.lenis) {
+      try {
+        window.lenis.stop();
+      } catch (e) {
+        console.warn('Failed to stop Lenis:', e);
+      }
+    }
+
+    // Backdrop fade-in animation
+    const backdrop = document.querySelector('.modal-backdrop');
+    if (backdrop) {
+      // Force reflow
+      backdrop.offsetHeight;
+      backdrop.style.opacity = '1';
+    }
+
+    // Entrance animation matching the exact v4 transition physics
+    const el = document.querySelector('.modal-panel-card');
+    if (el) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px) scale(0.97)';
+      el.style.transition = 'opacity 0.45s cubic-bezier(.2,.7,.2,1), transform 0.45s cubic-bezier(.2,.7,.2,1)';
+      
+      // Force reflow
+      el.offsetHeight;
+      
+      setTimeout(() => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      }, 50);
+    }
+
+    // Close on Escape key
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        handleClose(e);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.classList.remove('modal-open');
+      if (window.lenis) {
+        try {
+          window.lenis.start();
+        } catch (e) {
+          console.warn('Failed to start Lenis:', e);
+        }
+      }
+    };
+  }, [id, service]);
 
   if (!service) {
-    return (
-      <div className="min-h-screen pt-40 flex flex-col items-center justify-center text-white">
-        <h1 className="display text-4xl font-semibold mb-4">Service Not Found</h1>
-        <Link to="/" className="btn-primary">Return Home</Link>
-      </div>
-    );
+    return null;
   }
 
   const Icon = service.icon;
 
   return (
-    <div className="relative overflow-hidden bg-[#050507] text-white pt-32 pb-24">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-grid-fine mask-radial opacity-40"></div>
-      <div className="orb" style={{ top: '-10%', right: '-10%', width: '600px', height: '600px', background: `radial-gradient(circle, ${service.glow}, transparent 60%)` }}></div>
-      <div className="orb" style={{ bottom: '-20%', left: '-10%', width: '500px', height: '500px', background: `radial-gradient(circle, rgba(139,92,246,0.15), transparent 60%)` }}></div>
-
-      <div className="relative mx-auto max-w-4xl px-6 lg:px-8">
-        
-        {/* Breadcrumb / Back Link */}
-        <Link to="/" className="service-reveal inline-flex items-center text-[13px] text-white/50 hover:text-white transition-colors mb-12">
-          <svg className="mr-2" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          Back to all services
-        </Link>
-
-        {/* Hero Section */}
-        <div className="service-reveal flex items-center gap-4 mb-6">
-          <div className="w-14 h-14 rounded-2xl grid place-items-center bg-white/5 border border-white/10" style={{ boxShadow: `0 0 30px ${service.glow}` }}>
-            <Icon size={26} color="white" />
+    <div 
+      className="modal-backdrop"
+      onClick={handleBackdropClick}
+      style={{
+        opacity: 0,
+        transition: 'opacity 0.35s ease',
+        '--accent': service.accent,
+        '--accent-glow': service.accentGlow
+      }}
+    >
+      {/* Modal-like card panel */}
+      <div className="modal-panel-card" style={{ opacity: 0 }}>
+        <button onClick={handleClose} className="modal-close" aria-label="Close">&times;</button>
+        <div className="modal-content">
+          <div className="flex items-start gap-4">
+            <div className={`shrink-0 w-11 h-11 rounded-xl grid place-items-center border ${service.bg}`}>
+              <Icon size={20} color={service.iconColor} />
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="display text-2xl lg:text-[28px] font-semibold tracking-[-0.02em] text-white">
+                {service.title}
+              </h3>
+              <p className="text-[15px] text-white/65 mt-2.5 leading-relaxed">
+                {service.hook}
+              </p>
+            </div>
           </div>
-          <div className="chip"><span className="chip-dot" style={{ backgroundColor: service.glow, boxShadow: `0 0 12px ${service.glow}` }}></span> Service Detail</div>
-        </div>
 
-        <h1 className="service-reveal display text-5xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.035em] leading-[1.05] mb-6">
-          {service.title}
-        </h1>
-        
-        <p className="service-reveal text-xl sm:text-2xl text-white/70 font-light mb-16 leading-relaxed max-w-2xl">
-          {service.tagline}
-        </p>
-
-        {/* Overview Box */}
-        <div className="service-reveal gradient-border p-8 sm:p-10 mb-16" style={{ '--glow': service.glow }}>
-          <h2 className="display text-2xl font-semibold mb-4">Overview</h2>
-          <p className="text-[16.5px] text-white/60 leading-relaxed">
-            {service.overview}
-          </p>
-        </div>
-
-        {/* Details List */}
-        <div className="service-reveal mb-20">
-          <h2 className="display text-2xl font-semibold mb-8">What We Deliver</h2>
-          <div className="grid sm:grid-cols-2 gap-5">
-            {service.details.map((item, idx) => (
-              <div key={idx} className="flex items-start gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] transition-colors">
-                <div className="mt-0.5 w-6 h-6 rounded-full bg-white/10 flex items-center justify-center shrink-0">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={service.glow.replace('0.35', '1').replace('0.4', '1').replace('0.45', '1')} strokeWidth="3"><path d="M20 6L9 17l-5-5"/></svg>
-                </div>
-                <span className="text-[15px] text-white/80 leading-relaxed">{item}</span>
+          <div className="grid sm:grid-cols-2 gap-x-8 gap-y-7 mt-8 pt-7 border-t border-white/[0.06]">
+            <div>
+              <div className="text-[11px] uppercase tracking-[0.2em] text-white/40 mb-4">What you get</div>
+              <ul className="space-y-2.5 text-[14.5px] text-white/85">
+                {service.deliverables.map((d, index) => (
+                  <li key={index} className="flex items-start gap-2.5">
+                    <span className="mt-[7px] w-1.5 h-1.5 rounded-full shrink-0" style={{ background: service.accent }}></span>
+                    <span>{d}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <div className="text-[11px] uppercase tracking-[0.2em] text-white/40 mb-4">We use</div>
+              <div className="flex flex-wrap gap-1.5">
+                {service.tools.map((t, index) => (
+                  <span key={index} className="text-[12px] px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-white/75">
+                    {t}
+                  </span>
+                ))}
               </div>
-            ))}
+              <div className="text-[11px] uppercase tracking-[0.2em] text-white/40 mb-3 mt-7">Best for</div>
+              <p className="text-[14.5px] text-white/85 leading-relaxed">
+                {service.bestFor}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            <button 
+              className="btn-primary !py-3 !px-5 text-[13.5px]"
+              onClick={(e) => {
+                handleClose(e);
+                setTimeout(() => {
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    if (window.lenis) {
+                      window.lenis.scrollTo(contactSection, { offset: -60 });
+                    } else {
+                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }
+                }, 420);
+              }}
+            >
+              Start a project
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+            <button onClick={handleClose} className="btn-ghost !py-3 !px-5 text-[13.5px]">Close</button>
           </div>
         </div>
-
-        {/* CTA */}
-        <div className="service-reveal text-center pt-10 border-t border-white/10">
-          <h3 className="display text-3xl font-semibold mb-6">Ready to start your project?</h3>
-          <Link to="/" className="btn-primary" onClick={() => {
-            setTimeout(() => {
-              const contactSection = document.getElementById('contact');
-              if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-          }}>
-            Get in touch <svg className="ml-1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </Link>
-        </div>
-
       </div>
     </div>
   );

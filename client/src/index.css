@@ -276,6 +276,176 @@
     background: conic-gradient(from 0deg, transparent 0deg, rgba(139,92,246,0.4) 90deg, rgba(34,211,238,0.4) 180deg, rgba(245,158,11,0.4) 270deg, transparent 360deg);
     filter: blur(30px);
   }
+
+  /* Service details card (exact replica of v4.html modal layout) */
+  .modal-panel-card {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    background: linear-gradient(180deg, #0e0e16 0%, #08080c 100%) !important;
+    border: 1px solid var(--border-strong) !important;
+    border-radius: 24px;
+    box-shadow: 0 30px 90px -20px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04);
+  }
+  .modal-panel-card::-webkit-scrollbar {
+    width: 6px;
+  }
+  .modal-panel-card::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.08);
+    border-radius: 6px;
+  }
+  .modal-panel-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 24px;
+    right: 24px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    z-index: 3;
+  }
+  .modal-panel-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 240px;
+    background: radial-gradient(640px 200px at 50% -10%, var(--accent-glow), transparent 70%);
+    pointer-events: none;
+    border-radius: 24px 24px 0 0;
+    z-index: 0;
+  }
+  .modal-content {
+    position: relative;
+    z-index: 2;
+    padding: 36px 36px 30px;
+  }
+  @media (max-width: 640px) {
+    .modal-content {
+      padding: 30px 22px 24px;
+    }
+    .modal-panel-card {
+      border-radius: 22px;
+    }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 4;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    color: rgba(255,255,255,0.65);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s, transform 0.4s cubic-bezier(.2,.7,.2,1);
+  }
+  .modal-close:hover {
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    transform: rotate(90deg);
+  }
+
+  /* Privacy / legal page view */
+  .prose-doc {
+    color: rgba(255,255,255,0.72);
+    font-size: 15.5px;
+    line-height: 1.72;
+  }
+  .prose-doc h2 {
+    font-family: "General Sans", "Plus Jakarta Sans", sans-serif;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin-top: 44px;
+    margin-bottom: 14px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .prose-doc h2:first-child {
+    padding-top: 0;
+    border-top: 0;
+    margin-top: 24px;
+  }
+  .prose-doc h3 {
+    color: rgba(255,255,255,0.92);
+    font-size: 15.5px;
+    font-weight: 600;
+    margin-top: 22px;
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+  }
+  .prose-doc p { margin-bottom: 14px; }
+  .prose-doc ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 4px 0 16px 0;
+  }
+  .prose-doc ul li {
+    position: relative;
+    padding: 4px 0 4px 18px;
+  }
+  .prose-doc ul li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 13px;
+    width: 5px;
+    height: 5px;
+    border-radius: 999px;
+    background: rgba(167,139,250,0.7);
+  }
+  .prose-doc strong {
+    color: rgba(255,255,255,0.95);
+    font-weight: 600;
+  }
+  .prose-doc a {
+    color: #c4b5fd;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .prose-doc a:hover {
+    color: #ddd6fe;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose-doc em {
+    font-style: italic;
+    color: rgba(255,255,255,0.55);
+  }
+  .prose-doc .governing-law {
+    margin-top: 40px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: rgba(5, 5, 7, 0.72) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
+  body.modal-open {
+    overflow: hidden;
+  }
 }
 
 @keyframes spin-slow { to { transform: rotate(360deg); } }

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -131,7 +132,7 @@ export default function Footer() {
               <ul className="space-y-2.5 text-[14.5px]">
                 <li><a href="mailto:info@innonsh.com" className="text-white/60 hover:text-white transition">info@innonsh.com</a></li>
                 <li><span className="text-white/60">Pune, Maharashtra</span></li>
-                <li><span className="text-white/60">+91 · · · · · · · · · ·</span></li>
+                <li><a href="tel:+917620301874" className="text-white/60 hover:text-white transition">+91 76203 01874</a></li>
               </ul>
               <h4 className="text-[12px] font-semibold uppercase tracking-[0.2em] text-white/40 mb-4 mt-7">Social</h4>
               <div className="flex gap-2">
@@ -157,7 +158,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 pb-8 text-[13px] text-white/40">
           <div>© 2026 Innonsh Technologies. Crafted in Pune, India.</div>
           <div className="flex items-center gap-5">
-            <a href="#" className="hover:text-white transition">Privacy</a>
+            <Link to="/privacy" className="hover:text-white transition">Privacy</Link>
             <a href="#" className="hover:text-white transition">Terms</a>
             <a href="#" className="hover:text-white transition">Status</a>
             <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> All systems operational</span>
