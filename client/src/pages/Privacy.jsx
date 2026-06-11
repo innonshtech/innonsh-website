@@ -35,7 +35,7 @@ export default function Privacy() {
 
             <h2>1. Who We Are</h2>
             <p>The data controller for the Site is:</p>
-            <p><strong>Innonsh Technologies</strong><br/>Pune, Maharashtra, India<br/>Email: <a href="mailto:privacy@innonsh.com">privacy@innonsh.com</a></p>
+            <p><strong>Innonsh Technologies</strong><br/>Pune, Maharashtra, India<br/>Email: <a href="mailto:info@innonsh.com">info@innonsh.com</a></p>
             <p>If you have any questions about this Policy or about how we handle your personal data, please write to us at the email address above.</p>
 
             <h2>2. Information We Collect</h2>
@@ -43,7 +43,7 @@ export default function Privacy() {
 
             <h3>2.1 Information you give us directly</h3>
             <ul>
-              <li><strong>Contact enquiries.</strong> When you write to us at hello@innonsh.com, use the contact options on the Site, or otherwise initiate a conversation with our team, we receive the information you choose to share: typically your name, email address, company, phone number (if you provide it), and the contents of your message.</li>
+              <li><strong>Contact enquiries.</strong> When you write to us at info@innonsh.com, use the contact options on the Site, or otherwise initiate a conversation with our team, we receive the information you choose to share: typically your name, email address, company, phone number (if you provide it), and the contents of your message.</li>
               <li><strong>Newsletter sign-up.</strong> When you subscribe to our newsletter, we collect your email address.</li>
               <li><strong>Service engagements.</strong> If you become a prospective or active client, we collect business contact details, information about your project, and any documents, designs, code, or materials you share with us during the engagement.</li>
             </ul>
@@ -144,10 +144,10 @@ export default function Privacy() {
               <li><strong>Grievance redressal.</strong> To escalate any unresolved concern through our Grievance Officer (see Section 13).</li>
               <li><strong>Complaint to a regulator.</strong> Under the DPDP Act, you may also lodge a complaint with the Data Protection Board of India.</li>
             </ul>
-            <p>To exercise any of these rights, please write to us at <a href="mailto:privacy@innonsh.com">privacy@innonsh.com</a>. We will respond within 30 days of receiving your request, in line with applicable law. We may need to verify your identity before acting on a request.</p>
+            <p>To exercise any of these rights, please write to us at <a href="mailto:info@innonsh.com">info@innonsh.com</a>. We will respond within 30 days of receiving your request, in line with applicable law. We may need to verify your identity before acting on a request.</p>
 
             <h2>11. Children's Privacy</h2>
-            <p>The Site is intended for an adult audience and is not directed at children under the age of 18. We do not knowingly collect personal data of children through the Site. If you believe a child has provided us with personal data via the Site, please contact us at <a href="mailto:privacy@innonsh.com">privacy@innonsh.com</a> and we will delete it promptly.</p>
+            <p>The Site is intended for an adult audience and is not directed at children under the age of 18. We do not knowingly collect personal data of children through the Site. If you believe a child has provided us with personal data via the Site, please contact us at <a href="mailto:info@innonsh.com">info@innonsh.com</a> and we will delete it promptly.</p>
             <p>Our PrePrimary School ERP, which operates separately from this Site and is provided to educational institutions, handles data relating to children under stricter terms and controls described in its own privacy notice and the contract with each institution.</p>
 
             <h2>12. Our Products and ERP Platforms</h2>
@@ -163,7 +163,7 @@ export default function Privacy() {
             <p>
               <strong>Name:</strong> <em>To be appointed</em><br/>
               <strong>Designation:</strong> Grievance Officer, Innonsh Technologies<br/>
-              <strong>Email:</strong> <a href="mailto:grievance@innonsh.com">grievance@innonsh.com</a><br/>
+              <strong>Email:</strong> <a href="mailto:info@innonsh.com">info@innonsh.com</a><br/>
               <strong>Address:</strong> Pune, Maharashtra, India<br/>
               <strong>Hours:</strong> Monday to Friday, 10:00 to 18:00 IST (excluding public holidays)
             </p>
@@ -176,7 +176,7 @@ export default function Privacy() {
             <p>For any questions, requests, or concerns about this Policy or about how we handle your personal data, please contact:</p>
             <p>
               <strong>Innonsh Technologies</strong><br/>
-              Email: <a href="mailto:privacy@innonsh.com">privacy@innonsh.com</a><br/>
+              Email: <a href="mailto:info@innonsh.com">info@innonsh.com</a><br/>
               Address: Pune, Maharashtra, India
             </p>
 
