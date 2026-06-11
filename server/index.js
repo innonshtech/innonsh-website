@@ -29,7 +29,7 @@ app.use(helmet({
 }));
 
 // 2. CORS Security
-const allowedOrigins = ['http://localhost:5173', 'http://127.0.0.1:5173', 'https://innonsh.com'];
+const allowedOrigins = ['http://localhost:5173', 'http://127.0.0.1:5173', 'http://localhost:5174', 'https://innonsh.com'];
 app.use(cors({
   origin: (origin, callback) => {
     // Allow requests with no origin (like mobile apps or curl requests) if desired, but here we restrict to allowedOrigins
