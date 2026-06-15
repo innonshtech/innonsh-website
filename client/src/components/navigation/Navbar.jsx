@@ -1,4 +1,13 @@
+import { Link, useLocation } from 'react-router-dom';
+
 export default function Navbar() {
+  const location = useLocation();
+  const isHome = location.pathname === '/' || location.pathname.startsWith('/services/');
+
+  const getNavLink = (hash) => {
+    return isHome ? hash : `/${hash}`;
+  };
+
   return (
     <header className="fixed top-0 inset-x-0 z-50 transition-all duration-500" id="nav">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -11,7 +20,7 @@ export default function Navbar() {
             isolation: "isolate"
           }}
         >
-          <a href="#" className="flex items-center gap-2.5 group">
+          <Link to="/" className="flex items-center gap-2.5 group">
             <span className="relative grid place-items-center w-9 h-9 rounded-xl bg-white/[0.04] border border-white/10 overflow-hidden">
               <svg viewBox="0 0 54 56" className="w-[22px] h-[22px]" fill="none" xmlns="http://www.w3.org/2000/svg" style={{filter: 'drop-shadow(0 0 6px rgba(238,78,148,0.45))'}}>
                 <path d="M5.26605 30.1274H2.63312V47.8338H5.26605V30.1274Z" fill="url(#navLogoG)"/>
@@ -31,19 +40,20 @@ export default function Navbar() {
               </svg>
             </span>
             <span className="display font-semibold text-[17px] tracking-tight">Innonsh<span className="text-white/40">.</span></span>
-          </a>
+          </Link>
 
           <nav className="hidden lg:flex items-center gap-1 text-[14px] text-white/70">
-            <a href="#services" className="px-3.5 py-2 rounded-lg hover:text-white hover:bg-white/5 transition">Services</a>
-            <a href="#erp" className="px-3.5 py-2 rounded-lg hover:text-white hover:bg-white/5 transition">ERP Solutions</a>
-            <a href="#products" className="px-3.5 py-2 rounded-lg hover:text-white hover:bg-white/5 transition">Products</a>
-            <a href="#process" className="px-3.5 py-2 rounded-lg hover:text-white hover:bg-white/5 transition">Process</a>
-            <a href="#why" className="px-3.5 py-2 rounded-lg hover:text-white hover:bg-white/5 transition">Why Us</a>
+            <a href={getNavLink('#services')} className="px-3.5 py-2 rounded-lg hover:text-white hover:bg-white/5 transition">Services</a>
+            <a href={getNavLink('#erp')} className="px-3.5 py-2 rounded-lg hover:text-white hover:bg-white/5 transition">ERP Solutions</a>
+            <a href={getNavLink('#products')} className="px-3.5 py-2 rounded-lg hover:text-white hover:bg-white/5 transition">Products</a>
+            <a href={getNavLink('#process')} className="px-3.5 py-2 rounded-lg hover:text-white hover:bg-white/5 transition">Process</a>
+            <a href={getNavLink('#why')} className="px-3.5 py-2 rounded-lg hover:text-white hover:bg-white/5 transition">Why Us</a>
+            <Link to="/careers" className="px-3.5 py-2 rounded-lg hover:text-white hover:bg-white/5 transition">Careers</Link>
           </nav>
 
           <div className="flex items-center gap-2">
-            <a href="#contact" className="hidden md:inline-flex btn-ghost !py-2.5 !px-4 text-[13.5px]">Book a call</a>
-            <a href="#contact" className="btn-primary magnetic !py-2.5 !px-4 text-[13.5px]">
+            <a href={getNavLink('#contact')} className="hidden md:inline-flex btn-ghost !py-2.5 !px-4 text-[13.5px]">Book a call</a>
+            <a href={getNavLink('#contact')} className="btn-primary magnetic !py-2.5 !px-4 text-[13.5px]">
               Start a project
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </a>

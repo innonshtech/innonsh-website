@@ -1,11 +1,44 @@
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { servicesDetailed } from '../data/servicesDetailed';
+import { client } from '../sanity/client';
+import LucideIcon from '../components/common/IconMap';
 
 export default function ServiceDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const service = servicesDetailed[id];
+  
+  const [service, setService] = useState(() => servicesDetailed[id]);
+  const [loading, setLoading] = useState(true);
+  const animatedRef = useRef(null);
+
+  useEffect(() => {
+    if (!id) return;
+    
+    // Set static data first as immediate fallback
+    const staticData = servicesDetailed[id];
+    setService(staticData);
+    
+    if (import.meta.env.VITE_SANITY_PROJECT_ID) {
+      setLoading(true);
+      client.fetch(`*[_type == "service" && (slug.current == $id || slug == $id)][0]`, { id })
+        .then((data) => {
+          if (data) {
+            setService({
+              ...data,
+              slug: data.slug?.current || data.slug || ''
+            });
+          }
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.warn("Failed to fetch service detail from Sanity, using static fallback:", err);
+          setLoading(false);
+        });
+    } else {
+      setLoading(false);
+    }
+  }, [id]);
 
   const handleClose = (e) => {
     if (e) {
@@ -40,6 +73,8 @@ export default function ServiceDetail() {
 
   useEffect(() => {
     if (!service) return;
+    if (animatedRef.current === id) return;
+    animatedRef.current = id;
 
     // Add overflow hidden to body to prevent background scrolling
     document.body.classList.add('modal-open');
@@ -102,8 +137,6 @@ export default function ServiceDetail() {
     return null;
   }
 
-  const Icon = service.icon;
-
   return (
     <div 
       className="modal-backdrop"
@@ -121,7 +154,14 @@ export default function ServiceDetail() {
         <div className="modal-content">
           <div className="flex items-start gap-4">
             <div className={`shrink-0 w-11 h-11 rounded-xl grid place-items-center border ${service.bg}`}>
-              <Icon size={20} color={service.iconColor} />
+              {typeof service.icon === 'string' ? (
+                <LucideIcon name={service.icon} color={service.iconColor} size={20} />
+              ) : (
+                (() => {
+                  const IconComponent = service.icon;
+                  return IconComponent ? <IconComponent size={20} color={service.iconColor} /> : null;
+                })()
+              )}
             </div>
             <div className="flex-1 min-w-0">
               <h3 className="display text-2xl lg:text-[28px] font-semibold tracking-[-0.02em] text-white">

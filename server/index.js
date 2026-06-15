@@ -5,6 +5,9 @@ const rateLimit = require('express-rate-limit');
 const xss = require('xss-clean');
 const { z } = require('zod');
 require('dotenv').config();
+const multer = require('multer');
+const nodemailer = require('nodemailer');
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -119,6 +122,143 @@ app.post('/api/contact', contactLimiter, (req, res, next) => {
     }
     next(error);
   }
+});
+
+// Multer configurations for file uploads (Memory storage)
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: {
+    fileSize: 5 * 1024 * 1024, // 5MB limit
+  },
+  fileFilter: (req, file, cb) => {
+    const allowedMimeTypes = [
+      'application/pdf',
+      'application/msword',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    ];
+    if (allowedMimeTypes.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error('Only .pdf, .doc, and .docx files are allowed!'), false);
+    }
+  }
+});
+
+// Zod validation for applications
+const applicationSchema = z.object({
+  jobId: z.string().min(1, "Job ID is required"),
+  jobTitle: z.string().min(1, "Job Title is required"),
+  name: z.string().min(2, "Name must be at least 2 characters").max(100),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().max(20).optional(),
+  experience: z.string().min(1, "Experience details are required"),
+  coverNote: z.string().max(3000).optional(),
+  honeypot: z.string().max(0, "Spam detected").optional()
+});
+
+// Careers Application API with SMTP Forwarding
+app.post('/api/careers/apply', contactLimiter, (req, res, next) => {
+  // Use multer upload middleware
+  upload.single('resume')(req, res, async (err) => {
+    if (err) {
+      if (err.code === 'LIMIT_FILE_SIZE') {
+        return res.status(400).json({ success: false, message: 'File is too large. Max size is 5MB.' });
+      }
+      return res.status(400).json({ success: false, message: err.message });
+    }
+
+    try {
+      // Validate text fields
+      const validatedData = applicationSchema.parse(req.body);
+
+      if (validatedData.honeypot) {
+        return res.status(200).json({ success: true, message: 'Application submitted successfully.' });
+      }
+
+      if (!req.file) {
+        return res.status(400).json({ success: false, message: 'Resume file is required.' });
+      }
+
+      const { jobId, jobTitle, name, email, phone, experience, coverNote } = validatedData;
+      const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_TO_EMAIL, SMTP_FROM_EMAIL } = process.env;
+
+      // Check if SMTP is configured, else log to console as fallback testing mode
+      if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
+        console.warn("SMTP settings are not fully configured. Running in local test log mode.");
+        console.log("Candidate job application details:", {
+          jobId, jobTitle, name, email, phone, experience, coverNote,
+          resumeName: req.file.originalname,
+          resumeSize: `${(req.file.size / 1024).toFixed(1)} KB`
+        });
+        return res.status(200).json({ 
+          success: true, 
+          message: 'Application received successfully. (Server running in offline SMTP test mode)' 
+        });
+      }
+
+      // Configure Transporter
+      const transporter = nodemailer.createTransport({
+        host: SMTP_HOST,
+        port: parseInt(SMTP_PORT) || 465,
+        secure: parseInt(SMTP_PORT) === 465,
+        auth: {
+          user: SMTP_USER,
+          pass: SMTP_PASS,
+        },
+      });
+
+      // Mail setup
+      const mailOptions = {
+        from: `"${name} (Job Applicant)" <${SMTP_FROM_EMAIL}>`,
+        to: SMTP_TO_EMAIL,
+        replyTo: email,
+        subject: `[Job Application] ${jobTitle} - ${name}`,
+        text: `
+Job Application Received:
+-------------------------
+Position: ${jobTitle} (ID: ${jobId})
+Candidate Name: ${name}
+Email: ${email}
+Phone: ${phone || 'N/A'}
+Experience: ${experience}
+
+Cover Note:
+${coverNote || 'No cover note provided.'}
+        `,
+        html: `
+          <h3>New Job Application Received</h3>
+          <p><strong>Position:</strong> ${jobTitle} (ID: ${jobId})</p>
+          <p><strong>Candidate Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+          <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
+          <p><strong>Experience:</strong> ${experience}</p>
+          <br/>
+          <p><strong>Cover Note:</strong></p>
+          <p style="white-space: pre-wrap; background: #f5f5f7; padding: 15px; border-radius: 6px; border: 1px solid #e5e5eb;">${coverNote || 'No cover note provided.'}</p>
+        `,
+        attachments: [
+          {
+            filename: req.file.originalname,
+            content: req.file.buffer
+          }
+        ]
+      };
+
+      await transporter.sendMail(mailOptions);
+      res.status(200).json({ success: true, message: 'Application submitted successfully!' });
+
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        console.error('Validation Error (Apply):', error.issues || error);
+        return res.status(400).json({ 
+          success: false, 
+          message: 'Validation failed', 
+          errors: error.issues ? error.issues.map(e => e.message) : [error.message]
+        });
+      }
+      next(error);
+    }
+  });
 });
 
 // Inquiry API for CRM Lead Integration

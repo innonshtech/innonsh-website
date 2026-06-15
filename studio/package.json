@@ -1,0 +1,21 @@
+{
+  "name": "innonsh-studio",
+  "private": true,
+  "version": "1.0.0",
+  "main": "package.json",
+  "scripts": {
+    "dev": "sanity dev",
+    "start": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sanity": "^3.47.0",
+    "styled-components": "^6.1.11"
+  },
+  "devDependencies": {
+    "lucide-react": "^0.395.0"
+  }
+}
