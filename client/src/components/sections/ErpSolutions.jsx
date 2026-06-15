@@ -1,4 +1,4 @@
-  import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Building2, Plus, Calendar, Settings } from 'lucide-react'; // Placeholder icons for ERPs
@@ -180,7 +180,6 @@ export default function ErpSolutions() {
               <svg className="ml-2 transition-transform group-hover:translate-x-1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </div>
           </a>
-
           {/* PrePrimary ERP */}
           <a href="https://tinysteps.innonsh.com/" target="_blank" rel="noopener noreferrer" onMouseMove={handleMouseMove} className="reveal reveal-delay-1 lg:col-span-4 gradient-border group p-8 flex flex-col justify-between min-h-[360px]" style={{'--glow': 'rgba(244,114,182,0.5)'}}>
             <div>

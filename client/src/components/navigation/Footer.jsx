@@ -109,9 +109,11 @@ export default function Footer() {
               <h4 className="text-[12px] font-semibold uppercase tracking-[0.2em] text-white/40 mb-4">ERP Suite</h4>
               <ul className="space-y-2.5 text-[14.5px]">
                 <li><a href="https://infra.innonsh.com/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition">Innonsh Infra</a></li>
-                <li><a href="#erp" className="text-white/60 hover:text-white transition">Innonsh Clinicpro</a></li>
-                <li><a href="https://workgrid.innonsh.com" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition">Innonsh WorkGrid</a></li>
-                <li><a href="#erp" className="text-white/60 hover:text-white transition">Innonsh TinySteps</a></li>
+                <li><a href="https://clinicpro.innonsh.com/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition">Innonsh Clinicpro</a></li>
+                <li><a href="https://workgrid.innonsh.com/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition">Innonsh WorkGrid</a></li>
+                <li><a href="https://tinysteps.innonsh.com/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition">Innonsh TinySteps</a></li>
+                <li><a href="https://leadgen.innonsh.com/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition">Innonsh LeadGen</a></li>
+                <li><a href="https://sprintos.innonsh.com/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition">Innonsh SprintOS</a></li>
               </ul>
             </div>
             <div>
@@ -136,16 +138,22 @@ export default function Footer() {
               </ul>
               <h4 className="text-[12px] font-semibold uppercase tracking-[0.2em] text-white/40 mb-4 mt-7">Social</h4>
               <div className="flex gap-2">
-                <a href="#" className="w-9 h-9 rounded-lg grid place-items-center bg-white/5 hover:bg-white/10 transition border border-white/10" aria-label="X">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </a>
-                <a href="#" className="w-9 h-9 rounded-lg grid place-items-center bg-white/5 hover:bg-white/10 transition border border-white/10" aria-label="LinkedIn">
+                <a 
+                  href="https://www.linkedin.com/company/innonsh-technologies/posts/?feedView=all" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-9 h-9 rounded-lg grid place-items-center bg-white/5 hover:bg-white/10 transition border border-white/10" 
+                  aria-label="LinkedIn"
+                >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
                 </a>
-                <a href="#" className="w-9 h-9 rounded-lg grid place-items-center bg-white/5 hover:bg-white/10 transition border border-white/10" aria-label="GitHub">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.72.08-.72 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.8 1.31 3.48 1 .1-.78.42-1.31.76-1.61-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.13-.31-.54-1.53.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.65.24 2.87.11 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 0z"/></svg>
-                </a>
-                <a href="#" className="w-9 h-9 rounded-lg grid place-items-center bg-white/5 hover:bg-white/10 transition border border-white/10" aria-label="Instagram">
+                <a 
+                  href="https://www.instagram.com/innonsh.tech/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-9 h-9 rounded-lg grid place-items-center bg-white/5 hover:bg-white/10 transition border border-white/10" 
+                  aria-label="Instagram"
+                >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
                 </a>
               </div>
@@ -159,7 +167,7 @@ export default function Footer() {
           <div>© 2026 Innonsh Technologies. Crafted in Pune, India.</div>
           <div className="flex items-center gap-5">
             <Link to="/privacy" className="hover:text-white transition">Privacy</Link>
-            <a href="#" className="hover:text-white transition">Terms</a>
+            <Link to="/terms" className="hover:text-white transition">Terms</Link>
             <a href="#" className="hover:text-white transition">Status</a>
             <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> All systems operational</span>
           </div>
