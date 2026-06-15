@@ -164,12 +164,10 @@ export default function Footer() {
         <div className="w-full h-px bg-white/10 my-4"></div>
         
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 pb-8 text-[13px] text-white/40">
-          <div>© 2026 Innonsh Technologies. Crafted in Pune, India.</div>
+          <div>© 2026 Innonsh Technologies Private Limited. All Rights Reserved</div>
           <div className="flex items-center gap-5">
             <Link to="/privacy" className="hover:text-white transition">Privacy</Link>
             <Link to="/terms" className="hover:text-white transition">Terms</Link>
-            <a href="#" className="hover:text-white transition">Status</a>
-            <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> All systems operational</span>
           </div>
         </div>
       </div>
