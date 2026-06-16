@@ -239,20 +239,6 @@ export default function ErpSolutions() {
               </div>
               <div className="rounded-lg p-2.5 bg-white/[0.03] border border-white/10">
                 <div className="text-[10px] text-white/50">Fees</div><div className="display font-semibold">₹38L</div>
-            </div>
-            <div className="mt-5 flex items-center text-[14px] text-violet-300/90 font-medium">
-              Explore product
-              <svg className="ml-2 transition-transform group-hover:translate-x-1" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </div>
-          </a>
-          {/* PrePrimary ERP */}
-          <a href="https://tinysteps.innonsh.com/" target="_blank" rel="noopener noreferrer" onMouseMove={handleMouseMove} className="reveal reveal-delay-1 lg:col-span-4 gradient-border group p-8 flex flex-col justify-between min-h-[360px]" style={{'--glow': 'rgba(244,114,182,0.5)'}}>
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-11 h-11 rounded-xl grid place-items-center" style={{background: 'linear-gradient(135deg,#f472b640,#f472b610)', border: '1px solid #f472b640'}}>
-                  <Calendar size={20} color="#f9a8d4" />
-                </div>
-                <svg className="w-5 h-5 text-white/40 group-hover:text-white transition-all group-hover:translate-x-1 group-hover:-translate-y-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg>
               </div>
             </div>
           </div>
