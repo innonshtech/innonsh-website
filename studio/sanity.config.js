@@ -7,7 +7,7 @@ export default defineConfig({
   title: 'Innonsh Website CMS',
 
   // Replace with your Project ID after running 'npx sanity init'
-  projectId: 'your_project_id', 
+  projectId: 'ef6bnpoo', 
   dataset: 'production',
 
   plugins: [structureTool()],

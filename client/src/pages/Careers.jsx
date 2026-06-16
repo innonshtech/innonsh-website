@@ -132,7 +132,7 @@ export default function Careers() {
     submissionData.append('honeypot', formData.honeypot);
     submissionData.append('resume', resumeFile);
 
-    const serverUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    const serverUrl = import.meta.env.VITE_API_URL || '';
 
     try {
       const response = await fetch(`${serverUrl}/api/careers/apply`, {

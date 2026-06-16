@@ -325,6 +325,11 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Secure server listening on port ${PORT}`);
-});
+// Start listening if not running in production serverless environment (like Vercel)
+if (process.env.NODE_ENV !== 'production' || process.env.LOCAL_DEV === 'true') {
+  app.listen(PORT, () => {
+    console.log(`Secure server listening on port ${PORT}`);
+  });
+}
+
+module.exports = app;
