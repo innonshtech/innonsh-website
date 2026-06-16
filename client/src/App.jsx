@@ -7,6 +7,7 @@ import Footer from './components/navigation/Footer';
 import Home from './pages/Home';
 import ServiceDetail from './pages/ServiceDetail';
 import Privacy from './pages/Privacy';
+import Careers from './pages/Careers';
 import Terms from './pages/Terms';
 import TinyStepsLanding from './pages/TinyStepsLanding';
 import TinyStepsLogin from './pages/TinyStepsLogin';
@@ -107,6 +108,18 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop lenisRef={lenisRef} />
+      <CursorBlob />
+      <Navbar />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services/:id" element={<Home />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/careers" element={<Careers />} />
+        </Routes>
+      </main>
+      <Footer />
       <AppContent lenisRef={lenisRef} />
     </Router>
   );

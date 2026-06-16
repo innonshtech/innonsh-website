@@ -125,7 +125,7 @@ export default function Footer() {
               <h4 className="text-[12px] font-semibold uppercase tracking-[0.2em] text-white/40 mb-4 mt-7">Company</h4>
               <ul className="space-y-2.5 text-[14.5px]">
                 <li><a href="#" className="text-white/60 hover:text-white transition">About</a></li>
-                <li><a href="#" className="text-white/60 hover:text-white transition">Careers</a></li>
+                <li><Link to="/careers" className="text-white/60 hover:text-white transition">Careers</Link></li>
                 <li><a href="#" className="text-white/60 hover:text-white transition">Blog</a></li>
               </ul>
             </div>
