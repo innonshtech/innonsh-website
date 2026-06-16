@@ -8,6 +8,9 @@ import Home from './pages/Home';
 import ServiceDetail from './pages/ServiceDetail';
 import Privacy from './pages/Privacy';
 import Careers from './pages/Careers';
+import Terms from './pages/Terms';
+import TinyStepsLanding from './pages/TinyStepsLanding';
+import TinyStepsLogin from './pages/TinyStepsLogin';
 
 // Component to handle scroll restoration on route changes
 function ScrollToTop({ lenisRef }) {
@@ -31,6 +34,30 @@ function ScrollToTop({ lenisRef }) {
   }, [pathname, lenisRef]);
 
   return null;
+}
+
+function AppContent({ lenisRef }) {
+  const location = useLocation();
+  const isTinySteps = location.pathname.startsWith('/tinysteps');
+
+  return (
+    <>
+      <ScrollToTop lenisRef={lenisRef} />
+      {!isTinySteps && <CursorBlob />}
+      {!isTinySteps && <Navbar />}
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services/:id" element={<Home />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/tinysteps" element={<TinyStepsLanding />} />
+          <Route path="/tinysteps/login" element={<TinyStepsLogin />} />
+        </Routes>
+      </main>
+      {!isTinySteps && <Footer />}
+    </>
+  );
 }
 
 function App() {
@@ -93,6 +120,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <AppContent lenisRef={lenisRef} />
     </Router>
   );
 }
