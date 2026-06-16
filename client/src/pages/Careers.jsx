@@ -19,11 +19,10 @@ export default function Careers() {
     email: '',
     phone: '',
     experience: '',
+    domainsInterested: '',
     coverNote: '',
     honeypot: ''
   });
-  const [resumeFile, setResumeFile] = useState(null);
-  const [fileError, setFileError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
@@ -83,61 +82,61 @@ export default function Careers() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  // Handle File Upload
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setFileError('');
-    
-    if (!file) return;
-
-    // Validate size (max 5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      setFileError('File size exceeds the 5MB limit.');
-      setResumeFile(null);
-      return;
-    }
-
-    // Validate Mime Types
-    const allowedExtensions = /(\.pdf|\.doc|\.docx)$/i;
-    if (!allowedExtensions.exec(file.name)) {
-      setFileError('Only .pdf, .doc, and .docx resumes are accepted.');
-      setResumeFile(null);
-      return;
-    }
-
-    setResumeFile(file);
-  };
-
   // Form Submit Handler
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setSubmitError('');
     setSubmitSuccess(false);
 
-    if (!resumeFile) {
-      setFileError('Please upload your resume file.');
+    // Form validations
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setSubmitError('Please enter a valid email address.');
+      return;
+    }
+
+    const cleanedPhone = formData.phone.trim();
+    if (!/^\d{10}$/.test(cleanedPhone)) {
+      setSubmitError('Phone number must be exactly 10 digits.');
+      return;
+    }
+
+    if (!formData.experience.trim()) {
+      setSubmitError('Experience details are required.');
+      return;
+    }
+
+    if (!formData.domainsInterested) {
+      setSubmitError('Please select a domain you are interested in.');
       return;
     }
 
     setIsSubmitting(true);
 
-    const submissionData = new FormData();
-    submissionData.append('jobId', applyModalJob._id);
-    submissionData.append('jobTitle', applyModalJob.title);
-    submissionData.append('name', formData.name);
-    submissionData.append('email', formData.email);
-    submissionData.append('phone', formData.phone);
-    submissionData.append('experience', formData.experience);
-    submissionData.append('coverNote', formData.coverNote);
-    submissionData.append('honeypot', formData.honeypot);
-    submissionData.append('resume', resumeFile);
+    const payload = {
+      jobId: applyModalJob._id,
+      jobTitle: applyModalJob.title,
+      name: formData.name,
+      email: formData.email,
+      phone: cleanedPhone,
+      experience: formData.experience,
+      domainsInterested: formData.domainsInterested,
+      coverNote: formData.coverNote,
+      honeypot: formData.honeypot
+    };
 
-    const serverUrl = import.meta.env.VITE_API_URL || '';
+    let serverUrl = import.meta.env.VITE_API_URL || '';
+    if (serverUrl.includes(':5001')) {
+      serverUrl = serverUrl.replace(':5001', ':5000');
+    }
 
     try {
       const response = await fetch(`${serverUrl}/api/careers/apply`, {
         method: 'POST',
-        body: submissionData
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
       });
 
       const data = await response.json();
@@ -153,10 +152,10 @@ export default function Careers() {
         email: '',
         phone: '',
         experience: '',
+        domainsInterested: '',
         coverNote: '',
         honeypot: ''
       });
-      setResumeFile(null);
     } catch (err) {
       console.error("Submission Error:", err);
       setSubmitError(err.message || 'Server error. Please try again.');
@@ -176,8 +175,6 @@ export default function Careers() {
     setApplyModalJob(null);
     setSubmitSuccess(false);
     setSubmitError('');
-    setFileError('');
-    setResumeFile(null);
     // Unlock scroll
     document.body.classList.remove('modal-open');
     if (window.lenis) window.lenis.start();
@@ -319,10 +316,10 @@ export default function Careers() {
       {/* Application Form Modal */}
       {applyModalJob && (
         <div className="modal-backdrop" onClick={(e) => e.target.classList.contains('modal-backdrop') && closeApplyModal()} style={{ opacity: 1 }}>
-          <div className="modal-panel-card max-w-xl w-full" style={{ opacity: 1, transform: 'none' }}>
+          <div className="modal-panel-card max-w-xl w-full" style={{ opacity: 1, transform: 'none', maxHeight: 'calc(100vh - 80px)', display: 'flex', flexDirection: 'column' }}>
             <button onClick={closeApplyModal} className="modal-close" aria-label="Close Modal">&times;</button>
             
-            <div className="modal-content">
+            <div className="modal-content" style={{ overflowY: 'auto', flex: 1, paddingBottom: '40px' }}>
               {submitSuccess ? (
                 <div className="text-center py-10 animate-scaleUp">
                   <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-400/20 grid place-items-center mx-auto mb-6">
@@ -386,13 +383,14 @@ export default function Careers() {
 
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="text-[10px] uppercase tracking-wider text-white/45 mb-1.5 block">Phone Number</label>
+                        <label className="text-[10px] uppercase tracking-wider text-white/45 mb-1.5 block">Phone Number (10 Digits) *</label>
                         <input 
-                          type="text" 
+                          type="tel" 
                           name="phone"
+                          required
                           value={formData.phone}
                           onChange={handleInputChange}
-                          placeholder="+91 XXXXX XXXXX" 
+                          placeholder="e.g. 9876543210" 
                           className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-violet-400/50" 
                         />
                       </div>
@@ -408,6 +406,32 @@ export default function Careers() {
                           className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-violet-400/50" 
                         />
                       </div>
+                    </div>
+
+                    <div>
+                      <label className="text-[10px] uppercase tracking-wider text-white/45 mb-1.5 block">Domains Interested *</label>
+                      <select
+                        name="domainsInterested"
+                        required
+                        value={formData.domainsInterested}
+                        onChange={handleInputChange}
+                        className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-violet-400/50 appearance-none cursor-pointer"
+                        style={{
+                          backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>")`,
+                          backgroundRepeat: 'no-repeat',
+                          backgroundPosition: 'right 16px center',
+                          backgroundSize: '16px'
+                        }}
+                      >
+                        <option value="" disabled className="bg-[#151518]">Select another interested domain...</option>
+                        <option value="Web Development" className="bg-[#151518]">Web Development</option>
+                        <option value="Mobile App Development" className="bg-[#151518]">Mobile App Development</option>
+                        <option value="UI/UX Design" className="bg-[#151518]">UI/UX Design</option>
+                        <option value="QA & Testing" className="bg-[#151518]">QA & Testing</option>
+                        <option value="DevOps & Cloud" className="bg-[#151518]">DevOps & Cloud</option>
+                        <option value="Project Management" className="bg-[#151518]">Project Management</option>
+                        <option value="None" className="bg-[#151518]">None (Only this role)</option>
+                      </select>
                     </div>
 
                     <div>
@@ -431,49 +455,14 @@ export default function Careers() {
                       className="hidden"
                     />
 
-                    {/* File Upload Widget */}
-                    <div>
-                      <label className="text-[10px] uppercase tracking-wider text-white/45 mb-1.5 block">Resume File * (PDF, Word - Max 5MB)</label>
-                      
-                      <div className="relative border border-dashed border-white/10 hover:border-violet-400/40 rounded-xl p-6 text-center bg-white/[0.01] transition-colors cursor-pointer group">
-                        <input 
-                          type="file" 
-                          required
-                          accept=".pdf,.doc,.docx"
-                          onChange={handleFileChange}
-                          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                        />
-                        {resumeFile ? (
-                          <div className="flex items-center justify-between text-left bg-white/[0.04] p-3 rounded-lg border border-white/5">
-                            <div className="flex items-center gap-2.5 min-w-0">
-                              <Upload size={18} className="text-violet-300 shrink-0" />
-                              <div className="min-w-0">
-                                <p className="text-[13px] text-white font-medium truncate">{resumeFile.name}</p>
-                                <p className="text-[10px] text-white/40 mt-0.5">{(resumeFile.size / (1024 * 1024)).toFixed(2)} MB</p>
-                              </div>
-                            </div>
-                            <button 
-                              type="button" 
-                              onClick={(e) => { e.preventDefault(); e.stopPropagation(); setResumeFile(null); }}
-                              className="text-white/40 hover:text-white p-1"
-                            >
-                              <X size={14} />
-                            </button>
-                          </div>
-                        ) : (
-                          <div className="py-2">
-                            <Upload size={22} className="mx-auto mb-2 text-white/30 group-hover:text-violet-300 transition-colors" />
-                            <p className="text-[13px] text-white/70">Click to upload or drag & drop</p>
-                            <p className="text-[10px] text-white/35 mt-1">PDF, DOC, DOCX up to 5MB</p>
-                          </div>
-                        )}
-                      </div>
-                      
-                      {fileError && (
-                        <p className="text-rose-400 text-[11.5px] mt-1.5 flex items-center gap-1">
-                          <AlertCircle size={12} /> {fileError}
-                        </p>
-                      )}
+                    {/* Bold & prominent email instruction block */}
+                    <div className="p-5 rounded-xl border border-dashed border-violet-500/30 bg-violet-500/5 text-center my-6">
+                      <p className="text-white text-base font-bold tracking-wide">
+                        Please send your mail/resume to <a href="mailto:info@innonsh.com" className="text-violet-300 hover:text-violet-100 underline transition-colors">info@innonsh.com</a>
+                      </p>
+                      <p className="text-[11.5px] text-white/40 mt-1.5">
+                        Please submit this form to apply, and attach your resume in the email.
+                      </p>
                     </div>
 
                     <div className="pt-4 flex gap-3">

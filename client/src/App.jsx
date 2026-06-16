@@ -50,6 +50,7 @@ function AppContent({ lenisRef }) {
           <Route path="/" element={<Home />} />
           <Route path="/services/:id" element={<Home />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/careers" element={<Careers />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/tinysteps" element={<TinyStepsLanding />} />
           <Route path="/tinysteps/login" element={<TinyStepsLogin />} />
@@ -108,18 +109,6 @@ function App() {
 
   return (
     <Router>
-      <ScrollToTop lenisRef={lenisRef} />
-      <CursorBlob />
-      <Navbar />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/services/:id" element={<Home />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/careers" element={<Careers />} />
-        </Routes>
-      </main>
-      <Footer />
       <AppContent lenisRef={lenisRef} />
     </Router>
   );

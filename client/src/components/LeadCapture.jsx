@@ -74,7 +74,10 @@ const LeadCapture = () => {
     setErrorMessage('');
 
     try {
-      const apiBaseUrl = import.meta.env.VITE_API_URL || '';
+      let apiBaseUrl = import.meta.env.VITE_API_URL || '';
+      if (apiBaseUrl.includes(':5001')) {
+        apiBaseUrl = apiBaseUrl.replace(':5001', ':5000');
+      }
       const response = await fetch(`${apiBaseUrl}/api/inquiry`, {
         method: 'POST',
         headers: {
