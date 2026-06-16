@@ -1,7 +1,7 @@
 import { createClient } from '@sanity/client';
 
 export const client = createClient({
-  projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
+  projectId: import.meta.env.VITE_SANITY_PROJECT_ID || 'ef6bnpoo',
   dataset: import.meta.env.VITE_SANITY_DATASET || 'production',
   apiVersion: import.meta.env.VITE_SANITY_API_VERSION || '2026-06-15',
   useCdn: false, // Set to false to bypass CDN caching and get real-time updates instantly
