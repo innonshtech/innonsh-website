@@ -19,6 +19,10 @@
       "dest": "server/index.js"
     },
     {
+      "src": "/googlec0a3c9e7080a8432.html",
+      "dest": "server/index.js"
+    },
+    {
       "handle": "filesystem"
     },
     {

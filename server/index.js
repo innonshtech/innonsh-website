@@ -94,6 +94,11 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({ status: 'ok', message: 'Innonsh server is running securely' });
 });
 
+// Google Site Verification
+app.get('/googlec0a3c9e7080a8432.html', (req, res) => {
+  res.send('google-site-verification: googlec0a3c9e7080a8432.html');
+});
+
 // Contact API
 app.post('/api/contact', contactLimiter, (req, res, next) => {
   try {
