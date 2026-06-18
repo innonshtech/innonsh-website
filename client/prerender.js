@@ -269,6 +269,45 @@ const routes = {
       </div>
     `
   },
+  '/blog/hidden-cost-of-excel-when-spreadsheets-hold-your-business-back': {
+    title: 'The Hidden Cost of Excel | Innonsh Technologies',
+    description: 'Still running your business on Excel? Discover the real hidden costs of spreadsheets and why growing businesses are making the switch to smarter enterprise systems.',
+    canonical: 'https://www.innonsh.com/blog/hidden-cost-of-excel-when-spreadsheets-hold-your-business-back',
+    schemas: [
+      organizationSchema,
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.innonsh.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://www.innonsh.com/blog"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "The Hidden Cost of Excel",
+            "item": "https://www.innonsh.com/blog/hidden-cost-of-excel-when-spreadsheets-hold-your-business-back"
+          }
+        ]
+      }
+    ],
+    body: `
+      <div style="display:none">
+        <h1>The Hidden Cost of Excel: When Spreadsheets Start Holding Your Business Back</h1>
+        <p>By Innonsh Technologies</p>
+        <p>Still running your business on Excel? Discover the real hidden costs of spreadsheets and why growing businesses are making the switch to smarter enterprise systems.</p>
+      </div>
+    `
+  },
   '/tinysteps': {
     title: 'TinySteps - Pre-School Management System | Innonsh',
     description: 'TinySteps is an all-in-one pre-school management software by Innonsh Technologies, streamlining admissions, attendance, fees, and parent communication.',

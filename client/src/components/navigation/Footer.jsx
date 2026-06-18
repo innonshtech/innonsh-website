@@ -126,7 +126,7 @@ export default function Footer() {
               <ul className="space-y-2.5 text-[14.5px]">
                 <li><a href="#" className="text-white/60 hover:text-white transition">About</a></li>
                 <li><Link to="/careers" className="text-white/60 hover:text-white transition">Careers</Link></li>
-                <li><a href="#" className="text-white/60 hover:text-white transition">Blog</a></li>
+                <li><Link to="/blog/hidden-cost-of-excel-when-spreadsheets-hold-your-business-back" className="text-white/60 hover:text-white transition">Blog</Link></li>
               </ul>
             </div>
             <div>

@@ -11,6 +11,7 @@ import Careers from './pages/Careers';
 import Terms from './pages/Terms';
 import TinyStepsLanding from './pages/TinyStepsLanding';
 import TinyStepsLogin from './pages/TinyStepsLogin';
+import Blog from './pages/Blog';
 
 // Component to handle scroll restoration on route changes
 function ScrollToTop({ lenisRef }) {
@@ -52,6 +53,8 @@ function AppContent({ lenisRef }) {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<Blog />} />
           <Route path="/tinysteps" element={<TinyStepsLanding />} />
           <Route path="/tinysteps/login" element={<TinyStepsLogin />} />
         </Routes>
