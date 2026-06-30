@@ -96,7 +96,7 @@ export default function Testimonials() {
               </p>
               <div className="mt-7 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full" style={{background: t.avatarGradient || 'linear-gradient(135deg,#f59e0b,#b45309)'}}></div>
-                <div>
+                <div className="blur-[5px] select-none">
                   <div className="text-sm font-medium">{t.author}</div>
                   <div className="text-[12px] text-white/50">{t.role} · {t.company}</div>
                 </div>

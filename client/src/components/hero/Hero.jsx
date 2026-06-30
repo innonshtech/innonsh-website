@@ -77,7 +77,7 @@ export default function Hero() {
                 <div className="text-xs text-white/50 mt-1.5 tracking-wide">Enterprise clients</div>
               </div>
               <div>
-                <div className="display text-3xl font-semibold text-white">7</div>
+                <div className="display text-3xl font-semibold text-white">2</div>
                 <div className="text-xs text-white/50 mt-1.5 tracking-wide">Years building</div>
               </div>
             </div>

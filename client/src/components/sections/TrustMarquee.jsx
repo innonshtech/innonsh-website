@@ -65,7 +65,7 @@ export default function TrustMarquee() {
             <div className="text-sm text-white/55 mt-2">Client retention rate</div>
           </div>
           <div className="bg-ink-950 p-8">
-            <div className="display text-4xl lg:text-5xl font-semibold">7yr</div>
+            <div className="display text-4xl lg:text-5xl font-semibold">2yr</div>
             <div className="text-sm text-white/55 mt-2">Engineering experience</div>
           </div>
         </div>

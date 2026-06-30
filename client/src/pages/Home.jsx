@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import Hero from '../components/hero/Hero';
-import TrustMarquee from '../components/sections/TrustMarquee';
+// import TrustMarquee from '../components/sections/TrustMarquee';
 import Services from '../components/sections/Services';
 import ErpSolutions from '../components/sections/ErpSolutions';
 import Products from '../components/sections/Products';
@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <TrustMarquee />
+      {/* <TrustMarquee /> */}
       <Services />
       <ErpSolutions />
       <Products />
