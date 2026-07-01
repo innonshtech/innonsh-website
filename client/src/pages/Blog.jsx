@@ -147,10 +147,10 @@ const blogPosts = [
         <h3>1. The Mobile Blindspot (The Desktop Dependency)</h3>
         <p>If your managers or sales teams on the field have to call someone back at the office just to check inventory levels, order statuses, or client histories, your system is holding you back. Modern business happens on the move. A system that locks your data inside an office desktop or a rigid VPN is a bottleneck.</p>
         
-        <h3>2. The Fragmented Ecosystem (The \"Silo\" Problem)</h3>
-        <p>Five years ago, you just needed a system to handle billing or basic inventory. Today, you have a separate tool for sales leads, another for HR, and another for customer support. If your core software cannot easily integrate with modern apps and APIs, your employees are spending hours doing manual "data-bridging"—copying information from one screen and pasting it into another.</p>
+        <h3>2. The Fragmented Ecosystem (The "Silo" Problem)</h3>
+        <p>Five years ago, you just needed a system to handle billing or basic inventory. Today, you have a separate tool for sales leads, another for HR, and another for customer support. If your core software cannot easily integrate with modern apps and APIs, your employees are spending hours doing manual "data-bridging" - copying information from one screen and pasting it into another.</p>
         
-        <h3>3. The \"Waiting on the Developer\" Bottleneck</h3>
+        <h3>3. The "Waiting on the Developer" Bottleneck</h3>
         <p>Every time your business processes change—say, you launch a new product line or change your approval workflows—you have to call the original developer who built the system years ago. If they are unavailable, or if modifying the old code takes weeks and costs a fortune, your software is dictating your business strategy instead of supporting it.</p>
 
         <h2>What a Modern Enterprise Platform Looks Like</h2>
@@ -174,7 +174,7 @@ const blogPosts = [
         <p>The goal of technology was never to just give you a digital ledger. The goal is to give your business speed, agility, and a clear view of the horizon.</p>
 
         <h2>Let’s Build for Where You Are Going, Not Where You Were</h2>
-        <p>At Innonsh Technologies, we don’t believe in one-size-fits-all software or rigid systems that age out in a few years. We engineer modern, integrated ERPs, CRMs, and AI-first platforms designed around your current operational logic and future scale—built to power operations across regions and borders.</p>
+        <p>At Innonsh Technologies, we don’t believe in one-size-fits-all software or rigid systems that age out in a few years. We engineer modern, integrated ERPs, CRMs, and AI-first platforms designed around your current operational logic and future scale - built to power operations across regions and borders.</p>
         <p>If your business has outgrown its old software and you want to understand what a modern, unified system can do for your efficiency, let's connect.</p>
         <p>No heavy jargon. Just a clear roadmap for your next phase of growth.</p>
 
