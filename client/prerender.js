@@ -308,6 +308,77 @@ const routes = {
       </div>
     `
   },
+  '/blog': {
+    title: 'Blog | Innonsh Technologies',
+    description: 'Read the latest insights and articles on software engineering, enterprise systems, custom ERPs, and digital transformation from Innonsh Technologies.',
+    canonical: 'https://www.innonsh.com/blog',
+    schemas: [
+      organizationSchema,
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.innonsh.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://www.innonsh.com/blog"
+          }
+        ]
+      }
+    ],
+    body: `
+      <div style="display:none">
+        <h1>Innonsh Technologies Blog</h1>
+        <p>Insights and articles on software development, digital transformation, and modern enterprise platforms.</p>
+      </div>
+    `
+  },
+  '/blog/legacy-system-trap-is-your-5-year-old-software-quietly-slowing-down-your-business': {
+    title: 'The Legacy System Trap | Innonsh Technologies',
+    description: 'Is your 5-year-old custom software or desktop ERP quietly slowing down your operations? Learn about the mobile blindspot, silo problems, and how to scale.',
+    canonical: 'https://www.innonsh.com/blog/legacy-system-trap-is-your-5-year-old-software-quietly-slowing-down-your-business',
+    schemas: [
+      organizationSchema,
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.innonsh.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://www.innonsh.com/blog"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "The Legacy System Trap",
+            "item": "https://www.innonsh.com/blog/legacy-system-trap-is-your-5-year-old-software-quietly-slowing-down-your-business"
+          }
+        ]
+      }
+    ],
+    body: `
+      <div style="display:none">
+        <h1>The Legacy System Trap: Is Your 5-Year-Old Software Quietly Slowing Down Your Business?</h1>
+        <p>By Innonsh Technologies</p>
+        <p>Is your 5-year-old custom software or desktop ERP quietly slowing down your operations? Learn about the mobile blindspot, silo problems, and how to scale.</p>
+      </div>
+    `
+  },
   '/tinysteps': {
     title: 'TinySteps - Pre-School Management System | Innonsh',
     description: 'TinySteps is an all-in-one pre-school management software by Innonsh Technologies, streamlining admissions, attendance, fees, and parent communication.',
