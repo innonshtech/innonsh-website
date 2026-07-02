@@ -11,15 +11,15 @@ export default function TrustMarquee() {
     const reveals = sectionRef.current.querySelectorAll('.reveal');
     reveals.forEach((el, index) => {
       gsap.fromTo(el, 
-        { opacity: 0, y: 28 },
+        { opacity: 0, y: 12 },
         { 
           opacity: 1, 
           y: 0, 
-          duration: 0.9, 
+          duration: 0.4, 
           ease: "power2.out",
           scrollTrigger: {
             trigger: el,
-            start: "top 85%",
+            start: "top 95%",
           }
         }
       );

@@ -60,16 +60,16 @@ export default function Careers() {
     reveals.forEach((el, index) => {
       gsap.killTweensOf(el);
       gsap.fromTo(el,
-        { opacity: 0, y: 30 },
+        { opacity: 0, y: 12 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.9,
-          delay: index * 0.08,
+          duration: 0.4,
+          delay: index * 0.04,
           ease: "power2.out",
           scrollTrigger: {
             trigger: el,
-            start: "top 90%",
+            start: "top 95%",
           }
         }
       );

@@ -17,12 +17,12 @@ export default function Footer() {
       if (el.classList.contains('reveal-delay-1')) delay = 0.08;
       
       gsap.fromTo(el, 
-        { opacity: 0, y: 28 },
+        { opacity: 0, y: 12 },
         { 
           opacity: 1, 
           y: 0, 
-          duration: 0.9, 
-          delay: delay,
+          duration: 0.4, 
+          delay: delay * 0.5,
           ease: "power2.out",
           scrollTrigger: {
             trigger: el,

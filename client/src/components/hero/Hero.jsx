@@ -12,12 +12,12 @@ export default function Hero() {
       gsap.set(el, { willChange: "transform, opacity" });
       
       gsap.fromTo(el, 
-        { opacity: 0, y: 28 }, 
+        { opacity: 0, y: 12 }, 
         { 
           opacity: 1, 
           y: 0, 
-          duration: 0.9, 
-          delay: index * 0.08, 
+          duration: 0.4, 
+          delay: index * 0.04, 
           ease: "power2.out",
           force3D: true, // Force GPU compositing
           onComplete: () => {
