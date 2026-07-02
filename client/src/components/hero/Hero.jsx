@@ -7,11 +7,23 @@ export default function Hero() {
   useEffect(() => {
     // GSAP reveal animations with hardware acceleration hints
     const reveals = heroRef.current.querySelectorAll('.reveal');
+    const isMobile = window.innerWidth < 1024;
     reveals.forEach((el, index) => {
-      // Hint to the browser that these properties will change
-      gsap.set(el, { willChange: "transform, opacity" });
-      
-      gsap.set(el, { opacity: 1, y: 0 });
+      if (isMobile) {
+        gsap.set(el, { opacity: 1, y: 0 });
+      } else {
+        gsap.set(el, { willChange: "transform, opacity" });
+        gsap.fromTo(el,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: index * 0.05,
+            ease: "power3.out",
+          }
+        );
+      }
     });
   }, []);
 

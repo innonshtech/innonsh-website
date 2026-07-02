@@ -57,9 +57,27 @@ export default function Careers() {
   useEffect(() => {
     // Simple GSAP animations for entries - triggers whenever jobs change
     const reveals = containerRef.current.querySelectorAll('.reveal');
+    const isMobile = window.innerWidth < 1024;
     reveals.forEach((el, index) => {
       gsap.killTweensOf(el);
-      gsap.set(el, { opacity: 1, y: 0 });
+      if (isMobile) {
+        gsap.set(el, { opacity: 1, y: 0 });
+      } else {
+        gsap.fromTo(el,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: index * 0.05,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 88%",
+            }
+          }
+        );
+      }
     });
   }, [jobs]);
 

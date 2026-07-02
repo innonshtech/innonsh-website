@@ -12,11 +12,28 @@ export default function Footer() {
 
   useEffect(() => {
     const reveals = sectionRef.current.querySelectorAll('.reveal');
+    const isMobile = window.innerWidth < 1024;
     reveals.forEach((el, index) => {
       let delay = 0;
       if (el.classList.contains('reveal-delay-1')) delay = 0.08;
-      
-      gsap.set(el, { opacity: 1, y: 0 });
+      if (isMobile) {
+        gsap.set(el, { opacity: 1, y: 0 });
+      } else {
+        gsap.fromTo(el,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: delay * 0.7,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 88%",
+            }
+          }
+        );
+      }
     });
   }, []);
 
