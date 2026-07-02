@@ -113,20 +113,7 @@ export default function ErpSolutions() {
       if (el.classList.contains('reveal-delay-1')) delay = 0.08;
       if (el.classList.contains('reveal-delay-2')) delay = 0.16;
       
-      gsap.fromTo(el, 
-        { opacity: 0, y: 12 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.4, 
-          delay: delay * 0.5,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 95%",
-          }
-        }
-      );
+      gsap.set(el, { opacity: 1, y: 0 });
     });
   }, []);
 

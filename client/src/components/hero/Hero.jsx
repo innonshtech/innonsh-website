@@ -11,18 +11,7 @@ export default function Hero() {
       // Hint to the browser that these properties will change
       gsap.set(el, { willChange: "transform, opacity" });
       
-      gsap.fromTo(el, 
-        { opacity: 0, y: 12 }, 
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.4, 
-          delay: index * 0.04, 
-          ease: "power2.out",
-          force3D: true, // Force GPU compositing
-          onComplete: () => {
-            // Free up GPU memory once animation is complete
-            gsap.set(el, { willChange: "auto" });
+      gsap.set(el, { opacity: 1, y: 0 });
           }
         }
       );

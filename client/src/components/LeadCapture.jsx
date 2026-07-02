@@ -37,20 +37,7 @@ const LeadCapture = () => {
       if (el.classList.contains('reveal-delay-4')) delay = 0.32;
       if (el.classList.contains('reveal-delay-5')) delay = 0.40;
       
-      gsap.fromTo(el, 
-        { opacity: 0, y: 12 },
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.4, 
-          delay: delay * 0.5,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 95%",
-          }
-        }
-      );
+      gsap.set(el, { opacity: 1, y: 0 });
     });
   }, []);
 

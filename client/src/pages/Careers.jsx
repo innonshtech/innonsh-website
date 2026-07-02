@@ -59,20 +59,7 @@ export default function Careers() {
     const reveals = containerRef.current.querySelectorAll('.reveal');
     reveals.forEach((el, index) => {
       gsap.killTweensOf(el);
-      gsap.fromTo(el,
-        { opacity: 0, y: 12 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.4,
-          delay: index * 0.04,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 95%",
-          }
-        }
-      );
+      gsap.set(el, { opacity: 1, y: 0 });
     });
   }, [jobs]);
 
