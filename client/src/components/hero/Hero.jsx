@@ -12,9 +12,6 @@ export default function Hero() {
       gsap.set(el, { willChange: "transform, opacity" });
       
       gsap.set(el, { opacity: 1, y: 0 });
-          }
-        }
-      );
     });
   }, []);
 
